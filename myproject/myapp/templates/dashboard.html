@@ -1,0 +1,32 @@
+{% extends 'base.html' %}
+
+
+
+{% block content %}
+<h1>User detail Summary</h1>
+    {% if submission %}
+        <p>Name: {{ submission.name_of_employee }}</p>
+        <p>Designation: {{ submission.designation_of_employee }}</p>
+        <p>Mobile Number: {{ submission.mobile_number }}</p>
+        <p>Email: {{ submission.email_id }}</p>
+        {% if submission.photo %}
+            <img src="{{ submission.photo.url }}" alt="User Photo" class="profile-photo" >
+        {% else %}
+            <p>No photo available.</p>
+        {% endif %}
+        {% if submission.doctors_prescription %}
+            <p>Doctor's Prescription: <a href="{{ submission.doctors_prescription.url }}">Download</a></p>
+        {% else %}
+            <p>No doctor's prescription available.</p>
+        {% endif %}
+        {% if submission.estimate %}
+            <p>Estimate: <a href="{{ submission.estimate.url }}">Download</a></p>
+        {% else %}
+            <p>No estimate available.</p>
+        {% endif %}
+    {% else %}
+        <p>No form submission data available.</p>
+    {% endif %}
+    <a href="{% url 'logout' %}">Logout</a>
+{% endblock %}
+

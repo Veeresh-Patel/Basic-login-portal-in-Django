@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>{% block title %}My Site{% endblock %}</title>
+    {% load static %}
+    <link rel="stylesheet" type="text/css" href="{% static 'styles.css' %}">
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f4f4f4;
+        }
+        .header {
+            background-color: #4CAF50;
+            color: white;
+            padding: 10px 0;
+            text-align: center;
+        }
+        .container {
+            width: 80%;
+            margin: auto;
+            overflow: hidden;
+        }
+        .nav {
+            margin: 20px 0;
+            padding: 20px;
+            background: #333;
+            color: white;
+        }
+        .nav a {
+            color: white;
+            text-decoration: none;
+            padding: 10px;
+        }
+        .nav a:hover {
+            background-color: #575757;
+        }
+        .content {
+            background: white;
+            padding: 100px;
+            margin-top: 10px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+        .footer {
+            background-color: #333;
+            color: white;
+            text-align: center;
+            padding: 10px 0;
+            position: fixed;
+            width: 100%;
+            bottom: 0;
+        }
+    </style>
+</head>
+<body>
+    <div class="header">
+        <h1>{% block header %}Medical Reimbursement System{% endblock %}</h1>
+    </div>
+    <div class="container">
+        <div class="nav">
+            <a href="{% url 'login' %}">Login</a>
+            <a href="{% url 'register' %}">Register</a>
+            <a href="{% url 'form' %}">Form</a>
+            <a href="{% url 'dashboard' %}">Dashboard</a>
+        </div>
+        <div class="content">
+            {% block content %}{% endblock %}
+        </div>
+    </div>
+    <div class="footer">
+        <p>{% block footer %}© IT UNIT UPPCL{% endblock %}</p>
+    </div>
+</body>
+</html>

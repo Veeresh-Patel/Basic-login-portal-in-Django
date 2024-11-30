@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Options</title>
+    <style>
+        .options-container {
+            text-align: left;
+            margin-top: 50px;
+            padding-left: 20px;
+        }
+        .radio-button {
+            margin: 20px 0;
+        }
+        .submit-button {
+            display: inline-block;
+            padding: 10px 20px;
+            background-color: blue;
+            color: white;
+            text-align: center;
+            text-decoration: none;
+            border-radius: 5px;
+            border: none;
+            cursor: pointer;
+        }
+    </style>
+</head>
+<body>
+    <h2>Please choose an option:</h2>
+    <form method="post" action="{% url 'process_option' %}" class="options-container">
+        {% csrf_token %}
+        <div class="radio-button">
+            <input type="radio" id="fill_form" name="option" value="fill_form">
+            <label for="fill_form">Fill the claim form</label>
+        </div>
+        <div class="radio-button">
+            <input type="radio" id="view_summary" name="option" value="view_summary">
+            <label for="view_summary">Already filled, show the status</label>
+        </div>
+        <button type="submit" class="submit-button">Submit</button>
+    </form>
+</body>
+</html>
